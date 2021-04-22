@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+MainTest-Class: com.cyphir.ie.MainTest
+Main-Class: com.cyphir.ie.Main
+
