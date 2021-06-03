@@ -59,7 +59,7 @@ class animSuccess extends JLayeredPane {
                         System.out.println("The file has been uploaded successfully.");
                     }
                 } catch (IOException ignored) {
-                    System.out.println("Couldn't save the file");
+                    System.out.println(ignored);
                 }
             }
         });

@@ -1,5 +1,6 @@
 package com.cyphir.ie;
 
+import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 
 import javax.naming.Context;
@@ -8,15 +9,17 @@ import java.sql.*;
 
 // Klasa odpowiedzialna za połączenie z bazą danych oraz serwerem FTP
 class Conn {
-    private static String user = "root", pass = "root", server = "127.0.0.1";
+    private static String user = "root", pass = "", server = "127.0.0.1";
     private static int port = 21;
+    static FTPClient ftpClient = null;
+
 
     static Connection getConnection() {
         Connection c = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
             c = DriverManager.getConnection("jdbc:mysql://127.0.0.1/cyphir", "root", "");
-            FTPClient ftpClient = new FTPClient();
+            ftpClient = new FTPClient();
             ftpClient.connect(server, port);
             boolean success = ftpClient.login(user, pass);
             if (!success) {
@@ -45,4 +48,5 @@ class Conn {
     static String getServer() {
         return server;
     }
+
 }

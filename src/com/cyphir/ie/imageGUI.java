@@ -10,6 +10,9 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 // Klasa odpowiedzialna za wszelkie działania na obrazie i tworzenie nowego interfejsu
@@ -125,7 +128,8 @@ class imageGUI extends JLayeredPane {
                     Main.getJFrame().getContentPane().add(jPanel_success_anim);
 
                     // Generowanie zmodyfikowanego, zaszyfrowanego obrazu na podstawie wygenerowanego klucza
-                    generateEncoded(jTextArea_text.getText(), key, image);
+                    // String sha256hex = org.apache.commons.codec.digest.DigestUtils.sha256Hex(jTextArea_text.getText()); // Zaszyfrowanie tekstu przy użyciu SHA256
+                    generateEncoded(jTextArea_text.getText() /* sha256hex */, key, image);
                     repaint();
                     revalidate();
                 }

@@ -87,6 +87,7 @@ class loginGUI extends JLayeredPane {
                 String query = "SELECT * FROM `usersCyphir` WHERE `username` =? AND `password` =?";
 
                 try {
+                    Conn.getConnection();
                     ps = Conn.getConnection().prepareStatement(query);
 
                     ps.setString(1, username);
